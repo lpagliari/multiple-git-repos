@@ -27,3 +27,18 @@ for dir in * ; do
     );
   fi
 done
+
+echo
+echo 'repos on feature-branches: '
+
+for dir in * ; do
+  if [[ -d $dir  ]] && [[ -d $dir/.git ]]; then
+    (
+      cd $dir
+      # are we on master branch?
+      if [ 1 -ne `git st | grep 'On branch master' | wc -l` ]; then
+        echo $dir": "$(git rev-parse --abbrev-ref HEAD)
+      fi
+    );
+  fi
+done
