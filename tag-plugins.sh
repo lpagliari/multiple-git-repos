@@ -3,8 +3,8 @@ for dir in * ; do
     (
       cd $dir
       # git push --delete origin 1.0.0-alpha
-      git tag 1.0.0-alpha2
-      git push origin 1.0.0-alpha2
+      git tag 1.0.0-alpha.2018.02
+      git push origin 1.0.0-alpha.2018.02
     );
   fi
 done
