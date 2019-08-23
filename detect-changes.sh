@@ -5,7 +5,7 @@ for dir in * ; do
     (
       cd $dir
       # do we have any change on repo?
-      if [ 1 -ne `git st | grep 'nothing to commit' | wc -l` ]; then
+      if [ 1 -ne `git status | grep 'nothing to commit' | wc -l` ]; then
         echo $dir
         git status -s
       fi
@@ -21,7 +21,7 @@ for dir in * ; do
     (
       cd $dir
       # do we have any unpushed commit on repo?
-      if [ 0 -ne `git st | grep 'Your branch is ahead of' | wc -l` ]; then
+      if [ 0 -ne `git status | grep 'Your branch is ahead of' | wc -l` ]; then
         echo $dir
       fi
     );
@@ -36,7 +36,7 @@ for dir in * ; do
     (
       cd $dir
       # are we on master branch?
-      if [ 1 -ne `git st | grep 'On branch master' | wc -l` ]; then
+      if [ 1 -ne `git status | grep 'On branch master' | wc -l` ]; then
         echo $dir": "$(git rev-parse --abbrev-ref HEAD)
       fi
     );
